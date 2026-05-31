@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday 🎉</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    font-family:Arial;
+    background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+    text-align:center;
+}
+
+/* Birthday Card */
+.card{
+    position:relative;
+    top:120px;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    display:inline-block;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h1{
+    font-size:50px;
+    color:#ff4081;
+}
+
+/* Cake */
+.cake{
+    font-size:80px;
+    margin:20px;
+}
+
+/* Balloons */
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    width:60px;
+    height:80px;
+    border-radius:50%;
+    animation:float 10s infinite;
+}
+
+.balloon:before{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:80px;
+    background:black;
+    left:50%;
+    top:80px;
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-100vh);}
+}
+
+/* Different balloon colors */
+.b1{left:10%; background:red; animation-duration:8s;}
+.b2{left:25%; background:blue; animation-duration:10s;}
+.b3{left:40%; background:yellow; animation-duration:9s;}
+.b4{left:60%; background:green; animation-duration:11s;}
+.b5{left:80%; background:purple; animation-duration:7s;}
+
+/* Confetti */
+.confetti{
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:red;
+    top:-10px;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10px) rotate(0);}
+    100%{transform:translateY(100vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Birthday Card -->
+<div class="card">
+<h1>🎉 Happy Birthday 🎂</h1>
+<div class="cake">🎂</div>
+<p>Wishing you happiness, joy and lots of cake today!</p>
+<button onclick="playMusic()">Play Birthday Song 🎵</button>
+</div>
+
+<!-- Balloons -->
+<div class="balloon b1"></div>
+<div class="balloon b2"></div>
+<div class="balloon b3"></div>
+<div class="balloon b4"></div>
+<div class="balloon b5"></div>
+
+<!-- Birthday Music -->
+<audio id="music" loop>
+<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic(){
+document.getElementById("music").play();
+}
+
+/* Confetti Generator */
+for(let i=0;i<100;i++){
+let conf=document.createElement("div");
+conf.classList.add("confetti");
+conf.style.left=Math.random()*100+"vw";
+conf.style.background="hsl("+Math.random()*360+",100%,50%)";
+conf.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(conf);
+}
+</script>
+
+</body>
+</html>
